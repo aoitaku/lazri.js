@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazri</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      section {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: stretch;
+      }
+      #input {
+        font-size: 16px;
+        line-height: 1.8em;
+        border: none;
+        outline: none;
+        width: 50%;
+        height: 100%;
+        margin: 0;
+        overflow: scroll;
+        box-sizing: border-box;
+        padding: 1rem;
+        resize: none;
+      }
+      #result {
+        width: 50%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+      }
+      #result ul {
+        display: flex;
+        flex-grow: 0;
+        margin: 0;
+        padding: 0;
+        height: 2rem;
+        width: 100%;
+        background-color: #eaeaea;
+      }
+      #result ul li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      #result ul li button {
+        line-height: 2rem;
+        padding: 0 2rem;
+        border: none;
+        background: #c0c0c0;
+        cursor: pointer;
+      }
+      #result ul li button[disabled] {
+        color: #000000;
+        background: #ffffff;
+      }
+      #html, #json {
+        width: 100%;
+        max-width: 100%;
+        height: calc(100vh - 2rem);
+        flex-grow: 1;
+        flex-shrink: 1;
+        margin: 0;
+        overflow: scroll;
+        box-sizing: border-box;
+        padding: 1rem;
+        display: none;
+      }
+      #html[data-visible], #json[data-visible] {
+        display: block;
+      }
+      #json {
+        white-space: pre-wrap;
+      }
+      #html p {
+        font-size: 20px;
+        line-height: 2.0;
+        text-align: justify;
+        margin: 0 0 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import { Lazri, htmlTransform } from '/src/main.ts'
+      const textarea = document.getElementById('input')
+      const json = document.getElementById('json')
+      const html = document.getElementById('html')
+      const parsed = Lazri.parse(textarea.value)
+      json.innerText = JSON.stringify(parsed, null, ' ')
+      html.innerHTML = htmlTransform(parsed)
+      textarea.addEventListener('input', () => {
+        const parsed = Lazri.parse(textarea.value)
+        json.innerText = JSON.stringify(parsed, null, ' ')
+        html.innerHTML = htmlTransform(parsed)
+      })
+      const showHtml = document.getElementById('showHtml')
+      showHtml.addEventListener('click', () => {
+        html.dataset.visible = ''
+        delete json.dataset.visible
+        showHtml.disabled = true
+        showJson.disabled = false
+      })
+      const showJson = document.getElementById('showJson')
+      showJson.addEventListener('click', () => {
+        delete html.dataset.visible
+        json.dataset.visible = ''
+        showHtml.disabled = false
+        showJson.disabled = true
+      })
+    </script>
+    <section>
+      <textarea id="input">　メロスは激怒した。必ず、かの^邪智暴虐(じゃちぼうぎゃく)の王を除かなければならぬと決意した。メロスには政治がわからぬ。メロスは、村の牧人である。笛を吹き、羊と遊んで暮して来た。けれども邪悪に対しては、人一倍に敏感であった。きょう未明メロスは村を出発し、野を越え山越え、十里はなれた^此(こ)のシラクスの市にやって来た。メロスには父も、母も無い。女房も無い。十六の、内気な妹と二人暮しだ。この妹は、村の或る律気な一牧人を、近々、^花婿(はなむこ)として迎える事になっていた。結婚式も間近かなのである。メロスは、それゆえ、花嫁の衣裳やら祝宴の御馳走やらを買いに、はるばる市にやって来たのだ。先ず、その品々を買い集め、それから都の大路をぶらぶら歩いた。メロスには竹馬の友があった。セリヌンティウスである。今は此のシラクスの市で、石工をしている。その友を、これから訪ねてみるつもりなのだ。久しく逢わなかったのだから、訪ねて行くのが楽しみである。歩いているうちにメロスは、まちの様子を怪しく思った。ひっそりしている。もう既に日も落ちて、まちの暗いのは当りまえだが、けれども、なんだか、夜のせいばかりでは無く、市全体が、やけに寂しい。のんきなメロスも、だんだん不安になって来た。路で逢った若い衆をつかまえて、何かあったのか、二年まえに此の市に来たときは、夜でも皆が歌をうたって、まちは賑やかであった^筈(はず)だが、と質問した。若い衆は、首を振って答えなかった。しばらく歩いて^老爺(ろうや)に逢い、こんどはもっと、語勢を強くして質問した。老爺は答えなかった。メロスは両手で老爺のからだをゆすぶって質問を重ねた。老爺は、あたりをはばかる低声で、わずか答えた。</textarea>
+      <div id="result">
+        <ul>
+          <li><button id="showHtml" disabled>HTML</button></li>
+          <li><button id="showJson">JSON</button></li>
+        </ul>
+        <div>
+          <div id="html" data-visible></div>
+          <pre id="json"></pre>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
