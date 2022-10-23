@@ -3,6 +3,8 @@
 # lazri.js
 [軽量構造化テキストフォーマット Lazri](https://github.com/aoitaku/lazri) の JavaScript 実装です。
 
+[DEMO](https://aotak.dev/lazri/)
+
 # Lazri について
 Lazri は "Lazri Aozora bunko inspired structured text format" の略称です。HTML、JSON形式のテキストに変換可能で、他にも様々なフォーマットへの変換が可能になることを予定しています。
 

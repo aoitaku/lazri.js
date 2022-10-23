@@ -3,6 +3,8 @@
 # lazri.js
 JavaScript Implementation for [Lazri lightweight structured text format](https://github.com/aoitaku/lazri).
 
+[DEMO](https://aotak.dev/lazri/)
+
 # About Lazri
 Lazri is a bacronym for "Lazri Aozora bunko inspired structured text format". This format can be converted into HTML, JSON and also other formats are planned.
 
