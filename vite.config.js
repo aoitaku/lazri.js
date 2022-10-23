@@ -7,9 +7,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'Lazri',
-      fileName: (format) => `${
-        format === 'umd' ? 'lib' : format == 'es' ? 'esm' : format
-      }/lazri.js`,
+      fileName: (format) => `${ format === 'es' ? 'esm' : format }/lazri.js`,
     },
   },
 })

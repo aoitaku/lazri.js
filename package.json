@@ -5,20 +5,20 @@
   "type": "module",
   "types": "./types/lazri.d.ts",
   "files": [
+    "bin",
     "lib",
-    "esm",
     "types"
   ],
   "bin": {
     "lazri": "./bin/lazri.js"
   },
-  "main": "./lib/lazri.js",
-  "module": "./esm/lazri.js",
+  "main": "./lib/umd/lazri.js",
+  "module": "./lib/esm/lazri.js",
   "exports": {
     ".": {
-      "import": "./esm/lazri.js",
-      "require": "./lib/lazri.js",
-      "node": "./esm/lazri.js"
+      "import": "./lib/esm/lazri.js",
+      "require": "./lib/umd/lazri.js",
+      "node": "./lib/esm/lazri.js"
     }
   },
   "scripts": {
