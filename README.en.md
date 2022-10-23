@@ -1,4 +1,4 @@
-[日本語](./) | English
+[日本語](/) | English
 
 # lazri.js
 JavaScript Implementation for [Lazri lightweight structured text format](https://github.com/aoitaku/lazri).

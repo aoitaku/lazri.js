@@ -1,4 +1,4 @@
-日本語 | [English](./README.en.md)
+日本語 | [English](/README.en.md)
 
 # lazri.js
 [軽量構造化テキストフォーマット Lazri](https://github.com/aoitaku/lazri) の JavaScript 実装です。
