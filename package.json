@@ -1,7 +1,7 @@
 {
   "name": "lazri",
-  "private": true,
   "version": "1.0.0",
+  "description": "JavaScript Implementation for Lazri lightweight structured text format.",
   "type": "module",
   "types": "./types/lazri.d.ts",
   "files": [
