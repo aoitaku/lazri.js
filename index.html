@@ -89,15 +89,15 @@
   </head>
   <body>
     <script type="module">
-      import { Lazri, htmlTransform } from '/src/main.ts'
+      import { parse, htmlTransform } from '/src/main.ts'
       const textarea = document.getElementById('input')
       const json = document.getElementById('json')
       const html = document.getElementById('html')
-      const parsed = Lazri.parse(textarea.value)
+      const parsed = parse(textarea.value)
       json.innerText = JSON.stringify(parsed, null, ' ')
       html.innerHTML = htmlTransform(parsed)
       textarea.addEventListener('input', () => {
-        const parsed = Lazri.parse(textarea.value)
+        const parsed = parse(textarea.value)
         json.innerText = JSON.stringify(parsed, null, ' ')
         html.innerHTML = htmlTransform(parsed)
       })

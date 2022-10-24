@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { program } from 'commander'
 import { readFileSync } from 'node:fs'
-import { Lazri, htmlTransform } from '../lib/esm/lazri.js'
+import { parse, htmlTransform } from '../lib/esm/lazri.js'
 
 program
   .name('lazri')
@@ -11,7 +11,7 @@ program
   .option('-f, --format [format]', "format to transform to (default: 'json')")
   .action((file, options) => {
     const text = readFileSync(file, 'utf-8')
-    const parsed = Lazri.parse(text)
+    const parsed = parse(text)
     if (options.format === 'html') {
       console.log(htmlTransform(parsed))
       return
