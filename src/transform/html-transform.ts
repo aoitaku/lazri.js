@@ -24,15 +24,15 @@ function htmlTransform(parsed: Lazri.Root) {
 }
 
 function transformTitle(content: Lazri.InlineNode[]) {
-  return `<h1>${ content }</h1>`
+  return `<h1>${ transformSentence(content) }</h1>`
 }
 
 function transformHeading(content: Lazri.InlineNode[]) {
-  return `<h2>${ content }</h2>`
+  return `<h2>${ transformSentence(content) }</h2>`
 }
 
 function transformSubheading(content: Lazri.InlineNode[]) {
-  return `<h3>${ content }</h3>`
+  return `<h3>${ transformSentence(content) }</h3>`
 }
 
 function transformSection(nodes: Lazri.Paragraph[]) {
