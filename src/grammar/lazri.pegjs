@@ -81,12 +81,20 @@ InlineNode = InlineElement / Text
 
 InlineElement = Bouten / Cite / Rubi
 
-BoutenMarker = !EscapePrefix "``"
+BoutenMarker = !EscapePrefix "**"
 BoutenText = chars:(EscapedChar / (!BoutenMarker @[^\r\n]))+ { return chars.join('') }
 
 Bouten = BoutenMarker content:BoutenText BoutenMarker
 {
   return { type: 'bouten', content }
+}
+
+InnyouMarker = !EscapePrefix "''"
+InnyouText = chars:(EscapedChar / (!InnyouMarker @[^\r\n]))+ { return chars.join('') }
+
+Innyou = CiteMarker content:InnyouText InnyouMarker
+{
+  return { type: 'innyou', content }
 }
 
 CiteMarker = !EscapePrefix '""'
@@ -115,7 +123,7 @@ Text = chars:(EscapedChar / Char)+
 
 Char = !(InlineElement / EscapePrefix / NL) @.
 
-EscapedChar = EscapePrefix @[\\"`^()%\-]
+EscapedChar = EscapePrefix @[\\"'`^*()%\-]
 EscapePrefix = "\\"
 
 NL = "\r\n" / [\r\n]
