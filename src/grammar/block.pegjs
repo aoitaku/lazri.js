@@ -240,11 +240,8 @@ OrderedListMarker "Ordered List Marker"
   = "-" " "+ @Number
 
 Number
-  = $(([0-9]+ / RomanNumber) ".")+
-  / $("("? (([0-9]+ / [a-zA-Z]) / RomanNumber) ")")
-
-RomanNumber
-  = (("X"? "X")? "X")? ("IX" / "V" (("I"? "I")? "I")? / "IV" / (("I"? "I")? "I")?)
+  = $([0-9]+ ".")+
+  / $("("? [0-9]+ ")")
 
 ListMarker "List Marker"
   = @"-" &(" "+)
